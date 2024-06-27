@@ -1,0 +1,15 @@
+{
+    "App": {
+        "title": "My Play List"
+    },
+    "Pages": {
+        "Login": {
+            "Title": {
+                "welcome to system": "Lets Code",
+                "you can login with your username or mobile number": "شما میتوانید با استفاده از نام کاربری و یا شماره موبایل وارد سیستم شوید",
+                "you can login with your username": "Be the Best"
+            },
+            "Label": {}
+        }
+    }
+}
