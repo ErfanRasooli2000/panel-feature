@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import Editor from '@tinymce/tinymce-vue'
 import ScrollToTop from '@core/components/scroll-to-top/ScrollToTop.vue'
 
 // This will be populated in `beforeCreate` hook
@@ -39,7 +40,7 @@ export default {
     LayoutHorizontal,
     LayoutVertical,
     LayoutFull,
-
+    editor: Editor,
     ScrollToTop,
   },
   // ! We can move this computed: layout & contentLayoutType once we get to use Vue 3

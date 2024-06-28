@@ -20,6 +20,7 @@
     "@fullcalendar/list": "5.x",
     "@fullcalendar/timegrid": "5.x",
     "@fullcalendar/vue": "5.x",
+    "@tinymce/tinymce-vue": "^3.2.8",
     "@vue/composition-api": "1.3.0",
     "@vueuse/core": "4.0.0",
     "animate.css": "4.1.1",

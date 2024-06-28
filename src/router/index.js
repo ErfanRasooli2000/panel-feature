@@ -6,8 +6,6 @@ import { canNavigate } from '@/libs/acl/routeProtection'
 import { getUserData, getHomeRouteForLoggedInUser } from '@/auth/utils'
 import userManagment from './routes/user-managment'
 import artists from '@/router/routes/artists'
-import albums from '@/router/routes/albums'
-import songs from '@/router/routes/songs'
 
 Vue.use(VueRouter)
 
@@ -67,8 +65,6 @@ const router = new VueRouter({
     },
     ...userManagment,
     ...artists,
-    ...albums,
-    ...songs,
     {
       path: '*',
       redirect: 'error-404',

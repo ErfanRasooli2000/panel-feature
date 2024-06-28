@@ -31,12 +31,8 @@ tagVariant
 
 */
 import artist from '@/navigation/vertical/artists'
-import albums from '@/navigation/vertical/albums'
-import songs from '@/navigation/vertical/songs'
 
 // Array of sections
 export default [
     ...artist,
-    ...albums,
-    ...songs,
 ]
