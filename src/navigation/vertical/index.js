@@ -30,9 +30,9 @@ tag
 tagVariant
 
 */
-import artist from '@/navigation/vertical/artists'
+import posts from '@/navigation/vertical/posts'
 
 // Array of sections
 export default [
-    ...artist,
+    ...posts,
 ]

@@ -1,15 +1,15 @@
 export default [
   {
-    header: 'آرتیست ها',
+    header: 'پست ها',
   },
   {
-    title: 'لیست آرتیست ها',
+    title: 'لیست پست ها',
     icon: 'MenuIcon',
     permission: 'admin',
     route: 'Artists_List'
   },
   {
-    title: 'افزودن آرتیست',
+    title: 'افزودن پست',
     icon: 'RotateCwIcon',
     permission: 'admin',
     route: 'Artist_Create'

@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 import { canNavigate } from '@/libs/acl/routeProtection'
 import { getUserData, getHomeRouteForLoggedInUser } from '@/auth/utils'
 import userManagment from './routes/user-managment'
-import artists from '@/router/routes/artists'
+import artists from '@/router/routes/posts'
 
 Vue.use(VueRouter)
 

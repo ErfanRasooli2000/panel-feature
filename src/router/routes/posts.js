@@ -1,26 +1,26 @@
 export default [
   {
-    path: '/artists/create',
+    path: '/posts/create',
     name: 'Artist_Create',
-    component: () => import('@/views/artists/create.vue'),
+    component: () => import('@/views/posts/create.vue'),
     meta: {
       authRequired: true,
       permission: 'admin'
     }
   },
   {
-    path: '/artists/Lists',
+    path: '/posts/Lists',
     name: 'Artists_List',
-    component: () => import('@/views/artists/lists.vue'),
+    component: () => import('@/views/posts/lists.vue'),
     meta: {
       authRequired: true,
       permission: 'admin'
     }
   },
   {
-    path: '/artists/edit/:id',
+    path: '/posts/edit/:id',
     name: 'Artist_Edit',
-    component: () => import('@/views/artists/edit.vue'),
+    component: () => import('@/views/posts/edit.vue'),
     meta: {
       authRequired: true,
       permission: 'admin',
