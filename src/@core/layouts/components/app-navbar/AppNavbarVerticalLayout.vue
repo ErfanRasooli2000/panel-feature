@@ -53,7 +53,6 @@ import DarkToggler from './components/DarkToggler.vue'
 import CartDropdown from './components/CartDropdown.vue'
 import NotificationDropdown from './components/NotificationDropdown.vue'
 import UserDropdown from './components/UserDropdown.vue'
-import ReferralButton from '@/components/ReferralButton.vue'
 
 export default {
   components: {
@@ -69,7 +68,6 @@ export default {
     CartDropdown,
     NotificationDropdown,
     UserDropdown,
-    ReferralButton,
   },
   props: {
     toggleVerticalMenuActive: {

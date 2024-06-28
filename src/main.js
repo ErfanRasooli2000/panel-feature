@@ -24,8 +24,6 @@ import '@/libs/cookie'
 import '@/libs/date-picker'
 import '@/libs/saveFile'
 
-// Axios Mock Adapter
-import '@/@fake-db/db'
 
 // BSV Plugin Registration
 Vue.use(ToastPlugin)
