@@ -27,9 +27,8 @@
         />
       </b-avatar>
     </template>
-
+    <!--      :to="{ name: 'User_Profile'}"-->
     <b-dropdown-item
-      :to="{ name: 'User_Profile'}"
       link-class="d-flex align-items-center"
     >
       <feather-icon
@@ -96,7 +95,7 @@ export default {
       this.$cookies.remove('token')
 
       this.$echo.disconnect()
-      
+
       // Redirect to login page
       this.$router.push({ name: 'auth-login' })
     },

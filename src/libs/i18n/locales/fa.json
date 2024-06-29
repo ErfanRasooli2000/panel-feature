@@ -10,6 +10,11 @@
                 "you can login with your username": "Be the Best"
             },
             "Label": {}
+        },
+        "Posts": {
+            "Title" : "پست ها",
+            "Create" : "ساخت پست",
+            "List" : "لیست پست ها"
         }
     }
 }

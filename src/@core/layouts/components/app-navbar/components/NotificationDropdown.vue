@@ -99,15 +99,7 @@
       </vue-perfect-scrollbar>
 
       <!-- Cart Footer -->
-      <li class="dropdown-menu-footer">
-        <b-link :to="{name: 'Notification_My_Notifications'}">
-          <b-button
-            v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-            variant="primary"
-            block
-          >صفحه اعلانات</b-button>
-        </b-link>
-      </li>
+
     </b-nav-item-dropdown>
   </section>
 </template>

@@ -24,7 +24,6 @@
     </div>
 
     <b-navbar-nav class="nav align-items-center ml-auto">
-      <referral-button/>
       <b-button
       @click="reload"
       class="btn-sm"

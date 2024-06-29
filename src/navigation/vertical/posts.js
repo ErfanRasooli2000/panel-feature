@@ -1,15 +1,15 @@
 export default [
   {
-    header: 'پست ها',
+    header: 'Pages.Posts.Title',
   },
   {
-    title: 'لیست پست ها',
+    title: 'Pages.Posts.List',
     icon: 'MenuIcon',
     permission: 'admin',
     route: 'Artists_List'
   },
   {
-    title: 'افزودن پست',
+    title: 'Pages.Posts.Create',
     icon: 'RotateCwIcon',
     permission: 'admin',
     route: 'Artist_Create'

@@ -54,11 +54,17 @@
             noneditable_class: 'mceNonEditable',
             toolbar_mode: 'sliding',
             contextmenu: 'link image table',
-            skin: useDarkMode ? 'oxide-dark' : 'oxide',
-            content_css: useDarkMode ? 'dark' : 'default',
             content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
       }"
       />
+      <b-col sm="12">
+        <b-button
+            variant="info"
+            class="mt-3 float-right"
+            @click="createPost"
+            :disabled="onProgress"
+        >{{!onProgress ? 'ثبت پست' : 'در حال ارسال اطلاعات'}}</b-button>
+      </b-col>
     </b-card-body>
   </b-card>
 </template>
@@ -74,8 +80,10 @@ import {
   BFormGroup,
   BFormInput, BFormRadio, BFormText, BFormTextarea, BInputGroup, BInputGroupPrepend, BOverlay, BRow, BSpinner
 } from 'bootstrap-vue'
+
 import VSelect from 'vue-select'
 import editor from '@tinymce/tinymce-vue'
+
 export default {
   name: 'Create_Post',
   components: {
@@ -101,6 +109,7 @@ export default {
     BInputGroupPrepend,
     BFormRadio,
   },
+
   data(){
     return {
       content : '',
@@ -108,6 +117,24 @@ export default {
     }
   },
   methods: {
+    async createPost()
+    {
+      this.onProgress = true
+      await this.$http.post('blog-post/create', {
+        'content' : this.content,
+      })
+          .then(({data}) => {
+            this.$swal({
+              title: 'انجام شد',
+              text: data.message,
+              icon: 'success',
+              confirmButtonText: 'متوجه شدم',
+              timer: 3000
+            })
+          })
+          .catch(()=>{
+          })
+    }
   }
 }
 </script>
