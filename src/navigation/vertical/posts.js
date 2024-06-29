@@ -10,7 +10,7 @@ export default [
   },
   {
     title: 'Pages.Posts.Create',
-    icon: 'RotateCwIcon',
+    icon: 'TypeIcon',
     permission: 'admin',
     route: 'Artist_Create'
   },

@@ -4,10 +4,27 @@
       <b-card-title>نوشتن پست</b-card-title>
     </b-card-header>
     <b-card-body>
-      <editor
-          v-model="content"
-          api-key="p23ivpyb4vagnq2z1yty9cgnlz0hxawfv2s5wt4zn7a5vkdo"
-          :init="{
+      <b-row>
+        <b-col sm="12">
+          <b-form-group
+              label="موضوع پست"
+          >
+            <b-form-input
+                id="agency_type"
+                type="text"
+                placeholder="موضوع پست"
+                v-model="theTitle"
+            />
+          </b-form-group>
+        </b-col>
+        <b-col sm="12">
+          <b-form-group
+            label="متن پست"
+          >
+            <editor
+                v-model="content"
+                api-key="p23ivpyb4vagnq2z1yty9cgnlz0hxawfv2s5wt4zn7a5vkdo"
+                :init="{
             selector: 'textarea#open-source-plugins',
             plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons accordion',
             editimage_cors_hosts: ['picsum.photos'],
@@ -56,7 +73,38 @@
             contextmenu: 'link image table',
             content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
       }"
-      />
+            />
+          </b-form-group>
+        </b-col>
+        <b-col sm="12">
+          <b-form-group
+            label="دسته بندی پست"
+          >
+            <v-select
+                v-model="categories"
+                dir="rtl"
+                multiple
+                label="دسته بندی"
+                :options="categoryList"
+                :reduce="(category) => category.name"
+            />
+          </b-form-group>
+        </b-col>
+        <b-col sm="12">
+          <b-form-group
+              label="برچسب پست"
+          >
+            <v-select
+                dir="rtl"
+                multiple
+                taggable
+                push-tags
+                placeholder="افزودن برچسب"
+                label="title"
+            />
+          </b-form-group>
+        </b-col>
+      </b-row>
       <b-col sm="12">
         <b-button
             variant="info"
@@ -112,7 +160,15 @@ export default {
 
   data(){
     return {
+      theTitle : '',
       content : '',
+      categories: [],
+      categoryList: [
+        {
+          id: 1,
+          name: "علی"
+        }
+      ],
       onProgress: false
     }
   },
@@ -122,6 +178,7 @@ export default {
       this.onProgress = true
       await this.$http.post('blog-post/create', {
         'content' : this.content,
+        'title' : this.theTitle,
       })
           .then(({data}) => {
             this.$swal({
@@ -134,6 +191,8 @@ export default {
           })
           .catch(()=>{
           })
+
+      this.onProgress = false;
     }
   }
 }
