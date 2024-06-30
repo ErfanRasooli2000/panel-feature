@@ -13,7 +13,7 @@
                 id="agency_type"
                 type="text"
                 placeholder="موضوع پست"
-                v-model="theTitle"
+                v-model="form.title"
             />
           </b-form-group>
         </b-col>
@@ -22,7 +22,7 @@
             label="متن پست"
           >
             <editor
-                v-model="content"
+                v-model="form.content"
                 api-key="p23ivpyb4vagnq2z1yty9cgnlz0hxawfv2s5wt4zn7a5vkdo"
                 :init="{
             selector: 'textarea#open-source-plugins',
@@ -81,7 +81,7 @@
             label="دسته بندی پست"
           >
             <v-select
-                v-model="categories"
+                v-model="form.categories"
                 dir="rtl"
                 multiple
                 label="name"
@@ -160,23 +160,28 @@ export default {
 
   data(){
     return {
-      theTitle : '',
-      content : '',
-      categories: [],
-      categoryList: [
-        {
-          id: 1,
-          name: "علی"
-        },
-        {
-          id: 2,
-          name: "عرفان"
-        },
-      ],
+      form: {
+        title : '',
+        content : '',
+        categories: [],
+      },
+      categoryList: [],
       onProgress: false
     }
   },
+
+  mounted(){
+    this.getCategories();
+  },
+
   methods: {
+    async getCategories(){
+      await this.$http.get('category/get-for-select')
+          .then(({data})=>{
+            this.categoryList = data.data
+          })
+          .catch((err)=>{})
+    },
     async createPost()
     {
       this.onProgress = true
@@ -185,19 +190,17 @@ export default {
         'title' : this.theTitle,
       })
           .then(({data}) => {
-            this.$swal({
-              title: 'انجام شد',
-              text: data.message,
-              icon: 'success',
-              confirmButtonText: 'متوجه شدم',
-              timer: 3000
+            this.$bvToast.toast('پست با موفقیت ذخیره شد.', {
+              title: 'موفقیت',
+              toaster: 'b-toaster-top-right',
+              variant: 'success',
             })
           })
           .catch(()=>{
           })
 
       this.onProgress = false;
-    }
+    },
   }
 }
 </script>
