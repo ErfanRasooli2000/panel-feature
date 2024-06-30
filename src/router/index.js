@@ -2,9 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // Routes
-import { canNavigate } from '@/libs/acl/routeProtection'
 import { getUserData, getHomeRouteForLoggedInUser } from '@/auth/utils'
-import artists from '@/router/routes/posts'
+import categories from '@/router/routes/categories'
+import posts from '@/router/routes/posts'
 
 Vue.use(VueRouter)
 
@@ -62,7 +62,8 @@ const router = new VueRouter({
         resource: 'Auth',
       },
     },
-    ...artists,
+    ...categories,
+    ...posts,
     {
       path: '*',
       redirect: 'error-404',

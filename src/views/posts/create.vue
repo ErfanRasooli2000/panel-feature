@@ -84,9 +84,9 @@
                 v-model="categories"
                 dir="rtl"
                 multiple
-                label="دسته بندی"
+                label="name"
                 :options="categoryList"
-                :reduce="(category) => category.name"
+                :reduce="(category) => category.id"
             />
           </b-form-group>
         </b-col>
@@ -167,7 +167,11 @@ export default {
         {
           id: 1,
           name: "علی"
-        }
+        },
+        {
+          id: 2,
+          name: "عرفان"
+        },
       ],
       onProgress: false
     }

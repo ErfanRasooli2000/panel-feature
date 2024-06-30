@@ -6,12 +6,12 @@ export default [
     title: 'Pages.Posts.List',
     icon: 'MenuIcon',
     permission: 'admin',
-    route: 'Artists_List'
+    route: 'Post_List'
   },
   {
     title: 'Pages.Posts.Create',
     icon: 'TypeIcon',
     permission: 'admin',
-    route: 'Artist_Create'
+    route: 'Post_Create'
   },
 ]

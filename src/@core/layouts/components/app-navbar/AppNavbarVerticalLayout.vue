@@ -24,15 +24,6 @@
     </div>
 
     <b-navbar-nav class="nav align-items-center ml-auto">
-      <b-button
-      @click="reload"
-      class="btn-sm"
-      variant="light"
-      >
-      <feather-icon icon="RefreshCwIcon"></feather-icon>
-      به روز رسانی
-      </b-button>
-      <locale />
       <dark-Toggler class="d-none d-lg-block" />
       <search-bar />
       <notification-dropdown/>
@@ -75,9 +66,7 @@ export default {
     },
   },
   methods: {
-    reload(){
-      location.reload(true)
-    },
+
   },
 }
 </script>

@@ -1,7 +1,7 @@
 export default [
   {
     path: '/posts/create',
-    name: 'Artist_Create',
+    name: 'Post_Create',
     component: () => import('@/views/posts/create.vue'),
     meta: {
       authRequired: true,
@@ -10,7 +10,7 @@ export default [
   },
   {
     path: '/posts/Lists',
-    name: 'Artists_List',
+    name: 'Post_List',
     component: () => import('@/views/posts/lists.vue'),
     meta: {
       authRequired: true,
@@ -19,7 +19,7 @@ export default [
   },
   {
     path: '/posts/edit/:id',
-    name: 'Artist_Edit',
+    name: 'Post_Edit',
     component: () => import('@/views/posts/edit.vue'),
     meta: {
       authRequired: true,
