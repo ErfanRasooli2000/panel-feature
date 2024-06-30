@@ -42,6 +42,8 @@
         categoryList: [],
         fields: [
           {key: 'id' , label : "شناسه"},
+          {key: 'name' , label : "نام"},
+          {key: 'parent' , label : "پدر"},
         ]
       }
     },
