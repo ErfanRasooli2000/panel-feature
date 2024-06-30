@@ -57,7 +57,7 @@
   } from 'bootstrap-vue'
 
   export default {
-    name: "Post_Create",
+    name: "Category_Create",
 
     components: {
       VSelect,

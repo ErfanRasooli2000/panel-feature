@@ -10,7 +10,7 @@ export default [
   },
   {
     title: 'Pages.Categories.Create',
-    icon: 'TypeIcon',
+    icon: 'MessageSquareIcon',
     permission: 'admin',
     route: 'Category_Create'
   },
