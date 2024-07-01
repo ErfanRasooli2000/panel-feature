@@ -4,7 +4,10 @@
       <b-card-title>لیست برچسب ها</b-card-title>
     </b-card-header>
     <b-card-body>
-
+      <b-table
+        :fields="fields"
+        :items="categoryList"
+      ></b-table>
     </b-card-body>
   </b-card>
 </template>
@@ -43,7 +46,9 @@
         fields: [
           {key: 'id' , label : "شناسه"},
           {key: 'name' , label : "نام"},
-          {key: 'parent' , label : "پدر"},
+          {key: 'parent' , label : "برچسب پدر"},
+          {key: 'creator' , label : "سازنده"},
+          {key: 'created_at' , label : "تاریخ ساخت"},
         ]
       }
     },
@@ -54,7 +59,11 @@
 
     methods: {
       async getCategories(){
-
+        await this.$http.get('category/index')
+            .then(({data})=>{
+              this.categoryList = data.data
+            })
+            .catch((err)=>{})
       }
     }
   }
