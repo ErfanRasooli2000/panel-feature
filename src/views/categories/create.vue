@@ -109,14 +109,18 @@
         this.onProgress = true
         await this.$http.post('category/create', this.form)
             .then(({data}) => {
-              this.$bvToast.toast('دسته بندی با موفقیت ذخیره شد.', {
-                title: 'موفقیت',
-                toaster: 'b-toaster-top-right',
-                variant: 'success',
-              })
-              this.form = {
-                name: '',
-                parent_id: null,
+              if(data.status)
+              {
+                this.$bvToast.toast('دسته بندی با موفقیت ذخیره شد.', {
+                  title: 'موفقیت',
+                  toaster: 'b-toaster-top-right',
+                  variant: 'success',
+                })
+                this.form = {
+                  name: '',
+                  parent_id: null,
+                }
+                this.$router.push({ name :'Category_List' })
               }
             })
             .catch(()=>{
