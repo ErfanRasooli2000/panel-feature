@@ -1,9 +1,9 @@
 <template>
-  <b-card>
-    <b-card-header header-bg-variant="light">
+  <b-card bg-variant="bg-white">
+    <b-card-header>
       <b-card-title>لیست برچسب ها</b-card-title>
     </b-card-header>
-    <b-card-body>
+    <b-card-body class="bg-white">
       <b-table
         :fields="fields"
         :items="categoryList"
@@ -14,24 +14,26 @@
 
 <script>
 
-  import {
-    BButton,
-    BCard,
-    BCardBody,
-    BCardHeader, BCardTitle,
-    BCol,
-    BForm,
-    BFormCheckbox, BFormFile,
-    BFormGroup,
-    BFormInput, BFormRadio, BFormText, BFormTextarea, BInputGroup, BInputGroupPrepend, BOverlay, BRow, BSpinner
-  } from 'bootstrap-vue'
+import {
+  BButton,
+  BCard,
+  BCardBody,
+  BCardHeader, BCardTitle,
+  BCol,
+  BForm,
+  BFormCheckbox, BFormFile,
+  BFormGroup,
+  BFormInput, BFormRadio, BFormText, BFormTextarea, BInputGroup, BInputGroupPrepend, BOverlay, BRow, BSpinner, BTable
+} from 'bootstrap-vue'
 
   export default {
     name: "Category_List",
 
     components:{
+      BTable,
       BCardHeader,
       BCardTitle,
+      BCardBody,
       BCol,
       BForm,
       BFormCheckbox,
@@ -46,7 +48,7 @@
         fields: [
           {key: 'id' , label : "شناسه"},
           {key: 'name' , label : "نام"},
-          {key: 'parent' , label : "برچسب پدر"},
+          // {key: 'parent' , label : "برچسب پدر"},
           {key: 'creator' , label : "سازنده"},
           {key: 'created_at' , label : "تاریخ ساخت"},
         ]

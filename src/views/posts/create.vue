@@ -96,6 +96,7 @@
           >
             <v-select
                 dir="rtl"
+                v-model="form.tags"
                 multiple
                 taggable
                 push-tags
@@ -164,6 +165,7 @@ export default {
         title : '',
         content : '',
         categories: [],
+        tags: [],
       },
       categoryList: [],
       onProgress: false
@@ -185,10 +187,7 @@ export default {
     async createPost()
     {
       this.onProgress = true
-      await this.$http.post('blog-post/create', {
-        'content' : this.content,
-        'title' : this.theTitle,
-      })
+      await this.$http.post('blog-post/create', this.form)
           .then(({data}) => {
             this.$bvToast.toast('پست با موفقیت ذخیره شد.', {
               title: 'موفقیت',
