@@ -9,6 +9,12 @@ export default [
     route: 'Post_List'
   },
   {
+    title: 'Pages.Posts.TrashList',
+    icon: 'MenuIcon',
+    permission: 'admin',
+    route: 'Post_Trashed'
+  },
+  {
     title: 'Pages.Posts.Create',
     icon: 'TypeIcon',
     permission: 'admin',

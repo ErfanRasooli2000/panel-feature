@@ -19,6 +19,18 @@
         </b-col>
         <b-col sm="12">
           <b-form-group
+              label="اسلاگ پست"
+          >
+            <b-form-input
+                id="slug"
+                type="text"
+                placeholder="slug"
+                v-model="form.slug"
+            />
+          </b-form-group>
+        </b-col>
+        <b-col sm="12">
+          <b-form-group
             label="متن پست"
           >
             <editor
@@ -164,6 +176,7 @@ export default {
       form: {
         title : '',
         content : '',
+        slug: "",
         categories: [],
         tags: [],
       },

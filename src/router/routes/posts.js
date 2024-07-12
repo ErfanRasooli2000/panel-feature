@@ -18,6 +18,15 @@ export default [
     }
   },
   {
+    path: '/posts/trashed',
+    name: 'Post_Trashed',
+    component: () => import('@/views/posts/trashlist.vue'),
+    meta: {
+      authRequired: true,
+      permission: 'admin'
+    }
+  },
+  {
     path: '/posts/edit/:id',
     name: 'Post_Edit',
     component: () => import('@/views/posts/edit.vue'),

@@ -116,7 +116,7 @@ import {
             .catch((err)=>{})
       },
 
-      async deleteCategory(id){
+      async deleteCategory(){
         await this.$http.delete(`category/delete/${this.idForDelete}`)
         .then(({data})=>{
           if(data.status)

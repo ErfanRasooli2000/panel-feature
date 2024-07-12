@@ -2,7 +2,7 @@
   <div>
     <b-card>
       <b-card-header header-bg-variant="info">
-        <b-card-title>لیست پست ها</b-card-title>
+        <b-card-title>پست های حذف شده</b-card-title>
       </b-card-header>
       <b-card-body
           class="bg-white"
@@ -34,20 +34,13 @@
                   ویرایش پست
                 </b-dropdown-item>
                 <b-dropdown-item
-                    target="_blank" href="https://www.google.com">
+                    @click="restorePost(data.item.id)"
+                >
                   <feather-icon
-                      icon="CheckIcon"
+                      icon="RefreshCwIcon"
                       class="text-success"
                   />
-                  نمایش پست
-                </b-dropdown-item>
-                <b-dropdown-item
-                    @click="showDeleteModal(data.item.id)">
-                  <feather-icon
-                      icon="DeleteIcon"
-                      class="text-danger"
-                  />
-                  حذف پست
+                  بازگردانی پست
                 </b-dropdown-item>
               </b-dropdown>
             </template>
@@ -60,14 +53,6 @@
         />
       </b-card-body>
     </b-card>
-
-    <b-modal id="delete-confirmation-modal" @ok="deletePost">
-      <template #modal-title>
-        تایید حذف
-      </template>
-      <p>آیا مطمئن هستید که می‌خواهید این پست را حذف کنید؟</p>
-    </b-modal>
-
   </div>
 </template>
 
@@ -113,7 +98,6 @@ export default {
         { key: 'action', label: 'عملیات' },
       ],
       items: [],
-      PostIdForDelete: null,
       onProgress: false,
       totalRows: null,
       perPage: 15,
@@ -121,30 +105,8 @@ export default {
     }
   },
   methods: {
-    showDeleteModal(id) {
-      this.$bvModal.show('delete-confirmation-modal');
-      this.PostIdForDelete = id;
-    },
-
-    async deletePost(){
-      await this.$http.delete(`blog-post/delete/${this.PostIdForDelete}`)
-          .then(({data})=>{
-            if (data.status)
-            {
-              this.$bvToast.toast('پست با موفقیت حذف شد.', {
-                title: 'موفقیت',
-                toaster: 'b-toaster-top-right',
-                variant: 'success',
-              })
-
-              this.getPostsList();
-            }
-          })
-          .catch()
-    },
-
     getPostsList() {
-      this.$http.get(`blog-post/index?perPage=${this.perPage}&page=${this.currentPage}`)
+      this.$http.get(`blog-post/index?perPage=${this.perPage}&page=${this.currentPage}&type=justTrashed`)
           .then(({data}) => {
             if (data.status){
               this.items = data.data
@@ -152,7 +114,7 @@ export default {
               this.perPage = data.meta.per_page
               this.totalRows = data.meta.total
             }else{
-              this.$bvToast.toast('دریافت لیست چرخش ها با خطا مواجه شد' ,{
+              this.$bvToast.toast('دریافت لیست پست ها با خطا مواجه شد' ,{
                 title: 'خطا در دریافت اطلاعات',
                 toaster: 'b-toaster-top-right',
                 variant: 'danger'
@@ -161,6 +123,22 @@ export default {
           })
           .catch(()=>{})
     },
+
+    async restorePost(id)
+    {
+      await this.$http.get(`blog-post/restore/${id}`)
+          .then(({data})=>{
+            if (data.status)
+            {
+              this.$bvToast.toast(data.message ,{
+                title: 'موفقیت',
+                toaster: 'b-toaster-top-right',
+                variant: 'success'
+              })
+            }
+          })
+          .catch(()=>{})
+    }
   },
   mounted() {
     this.getPostsList();
