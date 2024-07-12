@@ -189,11 +189,16 @@ export default {
       this.onProgress = true
       await this.$http.post('blog-post/create', this.form)
           .then(({data}) => {
-            this.$bvToast.toast('پست با موفقیت ذخیره شد.', {
-              title: 'موفقیت',
-              toaster: 'b-toaster-top-right',
-              variant: 'success',
-            })
+              if (data.status)
+              {
+                this.$bvToast.toast('پست با موفقیت ذخیره شد.', {
+                  title: 'موفقیت',
+                  toaster: 'b-toaster-top-right',
+                  variant: 'success',
+                })
+
+                this.$router.push({ name :'Post_List' })
+              }
           })
           .catch(()=>{
           })

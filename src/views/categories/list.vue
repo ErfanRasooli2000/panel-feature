@@ -48,8 +48,8 @@ import {
         fields: [
           {key: 'id' , label : "شناسه"},
           {key: 'name' , label : "نام"},
-          // {key: 'parent' , label : "برچسب پدر"},
-          {key: 'creator' , label : "سازنده"},
+          {key: 'parent.name' , label : "برچسب پدر"},
+          {key: 'creator.name' , label : "سازنده"},
           {key: 'created_at' , label : "تاریخ ساخت"},
         ]
       }

@@ -2,7 +2,7 @@
   <div>
     <b-card>
       <b-card-header header-bg-variant="info">
-        <b-card-title>لیست آرتیست ها</b-card-title>
+        <b-card-title>لیست پست ها</b-card-title>
       </b-card-header>
       <b-card-body
           class="bg-white"
@@ -14,6 +14,11 @@
               class="text-center"
               responsive="sm"
           >
+
+            <template #cell(categories)="data">
+              <b-badge v-for="(category, index) in data.value" :key="index" variant="success" class="mr-1">{{ category.name }}</b-badge>
+            </template>
+
             <template #cell(action)="data">
               <b-dropdown
                   size="sm"
@@ -21,12 +26,28 @@
                   variant="outline-primary"
               >
                 <b-dropdown-item
-                    :to="{name: 'Artist_Edit' , params:{id: data.item.id}}">
+                    :to="{name: 'Post_Edit' , params:{id: data.item.id}}">
                   <feather-icon
                       icon="EditIcon"
+                      class="text-warning"
+                  />
+                  ویرایش پست
+                </b-dropdown-item>
+                <b-dropdown-item
+                    :to="{name: 'Artist_Edit' , params:{id: data.item.id}}">
+                  <feather-icon
+                      icon="CheckIcon"
+                      class="text-success"
+                  />
+                  نمایش پست
+                </b-dropdown-item>
+                <b-dropdown-item
+                    :to="{name: 'Artist_Edit' , params:{id: data.item.id}}">
+                  <feather-icon
+                      icon="DeleteIcon"
                       class="text-danger"
                   />
-                  ویرایش آرتیست
+                  حذف پست
                 </b-dropdown-item>
               </b-dropdown>
             </template>
@@ -57,7 +78,7 @@ import {
 } from 'bootstrap-vue'
 
 export default {
-  name: 'Artists_List',
+  name: 'Post_List',
   components: {
     BPagination,
     BModal,
@@ -77,8 +98,10 @@ export default {
     return {
       fields: [
         { key: 'id', label: 'شناسه' },
-        { key: 'name_fa', label: 'نام فارسی' },
-        { key: 'name_en', label: 'نام انگلیسی' },
+        { key: 'title', label: 'موضوع' },
+        { key: 'creator.name', label: 'سازنده' },
+        { key: 'categories', label: 'دسته بندی ها' },
+        { key: 'created_at', label: 'تاریخ ساخت' },
         { key: 'action', label: 'عملیات' },
       ],
       items: [],
@@ -89,8 +112,8 @@ export default {
     }
   },
   methods: {
-    getArtistsList() {
-      this.$http.get(`artist/list?perPage=${this.perPage}&page=${this.currentPage}`)
+    getPostsList() {
+      this.$http.get(`blog-post/index?perPage=${this.perPage}&page=${this.currentPage}`)
           .then(({data}) => {
             if (data.status){
               this.items = data.data
@@ -109,12 +132,12 @@ export default {
     },
   },
   mounted() {
-    this.getArtistsList();
+    this.getPostsList();
   },
   watch: {
     'currentPage'(newVal, oldVal){
       if (newVal != oldVal){
-        this.getArtistsList();
+        this.getPostsList();
       }
     }
   }
