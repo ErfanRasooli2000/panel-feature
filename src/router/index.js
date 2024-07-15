@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import { getUserData, getHomeRouteForLoggedInUser } from '@/auth/utils'
 import categories from '@/router/routes/categories'
 import posts from '@/router/routes/posts'
+import media from '@/router/routes/media'
 
 Vue.use(VueRouter)
 
@@ -64,6 +65,7 @@ const router = new VueRouter({
     },
     ...categories,
     ...posts,
+    ...media,
     {
       path: '*',
       redirect: 'error-404',
