@@ -67,7 +67,7 @@ import {
   BDropdown,
   BButton,
   BDropdownItem, BSpinner, BModal,
-  BAlert, BPagination,
+  BAlert, BPagination, BCard,
 } from 'bootstrap-vue'
 
 export default {
@@ -86,6 +86,7 @@ export default {
     BProgress,
     BBadge,
     BAlert,
+    BCard,
   },
   data() {
     return {

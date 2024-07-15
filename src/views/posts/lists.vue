@@ -82,7 +82,7 @@ import {
   BDropdown,
   BButton,
   BDropdownItem, BSpinner, BModal,
-  BAlert, BPagination,
+  BAlert, BPagination, BCard,
 } from 'bootstrap-vue'
 
 export default {
@@ -91,6 +91,7 @@ export default {
     BPagination,
     BModal,
     BSpinner,
+    BCard,
     BDropdownItem,
     BButton,
     BDropdown,

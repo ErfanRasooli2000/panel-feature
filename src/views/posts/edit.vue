@@ -224,6 +224,11 @@ export default {
       await this.$http.get(`blog-post/show/${this.$route.params.id}`)
           .then(({data})=>{
             this.form = data.data
+
+            this.form.categories = data.data.categories.map(category=>{
+              return category.id
+            })
+
           })
           .catch((err)=>{})
     }
