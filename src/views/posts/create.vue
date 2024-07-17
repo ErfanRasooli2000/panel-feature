@@ -31,6 +31,18 @@
         </b-col>
         <b-col sm="12">
           <b-form-group
+              label="توضیح پست"
+          >
+            <b-form-input
+                id="description"
+                type="text"
+                placeholder="توضیحات"
+                v-model="form.description"
+            />
+          </b-form-group>
+        </b-col>
+        <b-col sm="12">
+          <b-form-group
             label="متن پست"
           >
             <editor
@@ -117,6 +129,12 @@
             />
           </b-form-group>
         </b-col>
+        <b-form-file
+            class="m-2"
+            placeholder="تصویر پست را اینجا آپلود کنین"
+            drop-placeholder="تصویر پست را اینجا آپلود کنین"
+            v-model="form.thumbnail"
+        />
       </b-row>
       <b-col sm="12">
         <b-button
@@ -175,8 +193,10 @@ export default {
     return {
       form: {
         title : '',
+        description: '',
         content : '',
         slug: "",
+        thumbnail: null,
         categories: [],
         tags: [],
       },
@@ -199,8 +219,22 @@ export default {
     },
     async createPost()
     {
+      const formData = new FormData();
+      formData.append('thumbnail', this.form.thumbnail);
+      formData.append('title', this.form.title);
+      formData.append('description', this.form.description);
+      formData.append('content', this.form.content);
+      formData.append('slug', this.form.slug);
+
+      for (let i = 0; i < this.form.categories.length; i++) {
+        formData.append('categories[]', this.form.categories[i]);
+      }
+      for (let i = 0; i < this.form.tags.length; i++) {
+        formData.append('tags[]', this.form.tags[i]);
+      }
+
       this.onProgress = true
-      await this.$http.post('blog-post/create', this.form)
+      await this.$http.post('blog-post/create', formData)
           .then(({data}) => {
               if (data.status)
               {

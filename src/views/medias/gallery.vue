@@ -114,7 +114,6 @@ export default {
     },
 
     copyToClipboard(url) {
-      console.log(url)
       const el = document.createElement('textarea');
       el.value = url;
       document.body.appendChild(el);
