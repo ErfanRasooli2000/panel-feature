@@ -221,7 +221,10 @@ export default {
 
     async updatePost() {
       const formData = new FormData();
-      formData.append('thumbnail', this.form.thumbnail);
+
+      if (this.form.thumbnail)
+        formData.append('thumbnail', this.form.thumbnail);
+
       formData.append('title', this.form.title);
       formData.append('description', this.form.description);
       formData.append('content', this.form.content);
@@ -258,7 +261,7 @@ export default {
       await this.$http.get(`blog-post/show/${this.$route.params.id}`)
           .then(({data})=>{
             this.form = data.data
-
+            this.form.thumbnail = null;
             this.form.categories = data.data.categories.map(category=>{
               return category.id
             })

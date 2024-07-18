@@ -34,7 +34,7 @@
                   ویرایش پست
                 </b-dropdown-item>
                 <b-dropdown-item
-                    target="_blank" href="https://www.google.com">
+                    target="_blank" :href="data.item.url">
                   <feather-icon
                       icon="CheckIcon"
                       class="text-success"
