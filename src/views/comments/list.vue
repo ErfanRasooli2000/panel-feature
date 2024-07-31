@@ -124,7 +124,7 @@ export default {
       categoryList: [],
       fields: [
         {key: 'id' , label : "شناسه"},
-        {key: 'parent.name' , label : "نام پست"},
+        {key: 'post.name' , label : "نام پست"},
         {key: 'parent.name' , label : "وضعیت"},
         {key: 'name' , label : "نام کاربر"},
         {key: 'created_at' , label : "تاریخ ساخت"},
