@@ -6,7 +6,7 @@
     <b-card-body class="bg-white">
       <b-table
           :fields="fields"
-          :items="categoryList"
+          :items="commentsList"
       >
 
         <template #cell(action)="data">
@@ -121,12 +121,12 @@ export default {
   data(){
     return{
       onProgress: false,
-      categoryList: [],
+      commentsList: [],
       fields: [
         {key: 'id' , label : "شناسه"},
-        {key: 'post.name' , label : "نام پست"},
-        {key: 'parent.name' , label : "وضعیت"},
-        {key: 'name' , label : "نام کاربر"},
+        {key: 'post.title' , label : "نام پست"},
+        {key: 'stats.value' , label : "وضعیت"},
+        {key: 'creator.name' , label : "نام کاربر"},
         {key: 'created_at' , label : "تاریخ ساخت"},
         {key: 'action' , label : "عملیات"},
       ],
@@ -141,7 +141,7 @@ export default {
     async getComments(){
       await this.$http.get('comments/index')
           .then(({data})=>{
-            this.categoryList = data.data
+            this.commentsList = data.data
           })
           .catch((err)=>{})
     },
